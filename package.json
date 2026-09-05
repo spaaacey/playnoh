@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "playnoh.helloWorld",
-        "title": "Hello World"
+        "command": "playnoh.addComment",
+        "title": "Add Comment"
       }
     ]
   },
