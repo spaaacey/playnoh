@@ -23,6 +23,7 @@ export const copyCommments = vscode.commands.registerCommand(
       })
       .join("\n");
 
-    await vscode.env.clipboard.writeText(str);
+    const prompt = "/playnoh-reply\n" + str;
+    await vscode.env.clipboard.writeText(prompt);
   },
 );
