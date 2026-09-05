@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
-import { addComment } from "./addComments";
+import { commentController, createComment } from "./commentController";
 
 export function activate(context: vscode.ExtensionContext) {
-  context.subscriptions.push(addComment);
+  context.subscriptions.push(commentController, createComment);
 }
 
 // This method is called when your extension is deactivated
