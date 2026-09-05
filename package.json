@@ -18,6 +18,11 @@
       {
         "command": "playnoh.createComment",
         "title": "Save Comment"
+      },
+      {
+        "command": "playnoh.copyComments",
+        "title": "Copy Comments",
+        "icon": "$(rocket)"
       }
     ],
     "menus": {
@@ -26,6 +31,9 @@
           "command": "playnoh.createComment",
           "group": "inline"
         }
+      ],
+      "editor/title": [
+        { "command": "playnoh.copyComments", "group": "navigation" }
       ]
     }
   },

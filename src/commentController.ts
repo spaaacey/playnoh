@@ -1,8 +1,7 @@
 import * as vscode from "vscode";
 import { randomBytes } from "node:crypto";
-// import * as crypto from "node:crypto";
-import * as path from "path";
-import * as fs from "fs/promises";
+import * as path from "node:path";
+import * as fs from "node:fs/promises";
 
 export const commentController = vscode.comments.createCommentController(
   "playnoh",
