@@ -8,6 +8,10 @@ export const commentController = vscode.comments.createCommentController(
   "Playnoh",
 );
 
+// Live threads created this session, keyed by the id written to the JSONL.
+// Session-scoped: after a window reload this is empty and replies are skipped.
+export const threadsById = new Map<string, vscode.CommentThread>();
+
 // Lines that get the "+" gutter button on hover.
 commentController.commentingRangeProvider = {
   provideCommentingRanges: (document) => [
@@ -43,6 +47,8 @@ export const createComment = vscode.commands.registerCommand(
       startLine: (range?.start.line ?? 0) + 1,
       endLine: (range?.end.line ?? 0) + 1,
     };
+
+    threadsById.set(entry.id, reply.thread);
 
     const file = path.join(ws.uri.fsPath, ".claude", "agent-notes-user.jsonl");
     await fs.mkdir(path.dirname(file), { recursive: true });

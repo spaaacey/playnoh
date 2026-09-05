@@ -1,11 +1,17 @@
 import * as vscode from "vscode";
 import { commentController, createComment } from "./commentController";
 import { copyCommments } from "./copyComments";
+import { refreshComments } from "./refreshComments";
 import path from "node:path";
 import { unlink } from "node:fs/promises";
 
 export function activate(context: vscode.ExtensionContext) {
-  context.subscriptions.push(commentController, createComment, copyCommments);
+  context.subscriptions.push(
+    commentController,
+    createComment,
+    copyCommments,
+    refreshComments,
+  );
 }
 
 // This method is called when your extension is deactivated
@@ -15,7 +21,18 @@ export async function deactivate() {
   if (!ws) {
     return;
   }
-  const file = path.join(ws.uri.fsPath, ".claude", "agent-notes-user.jsonl");
+  const userFile = path.join(
+    ws.uri.fsPath,
+    ".claude",
+    "agent-notes-user.jsonl",
+  );
+  const agentFile = path.join(
+    ws.uri.fsPath,
+    ".claude",
+    "agent-notes-replies.jsonl",
+  );
 
-  await unlink(file);
+  await unlink(userFile);
+  await unlink(agentFile);
+
 }

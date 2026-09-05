@@ -23,6 +23,11 @@
         "command": "playnoh.copyComments",
         "title": "Copy Comments",
         "icon": "$(rocket)"
+      },
+      {
+        "command": "playnoh.refreshComments",
+        "title": "Refresh Comments",
+        "icon": "$(refresh)"
       }
     ],
     "menus": {
@@ -33,7 +38,8 @@
         }
       ],
       "editor/title": [
-        { "command": "playnoh.copyComments", "group": "navigation" }
+        { "command": "playnoh.copyComments", "group": "navigation" },
+        { "command": "playnoh.refreshComments", "group": "navigation" }
       ]
     }
   },
